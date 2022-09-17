@@ -8,7 +8,7 @@ type Props = {
 const calculateDuration = (targetDate: any) =>
   moment.duration(Math.max(targetDate - Math.floor(Date.now())), 'milliseconds');
 
-const Countdown: React.FC<Props> = ({ targetDate }) => {
+const CountdownTimer: React.FC<Props> = ({ targetDate }) => {
   const [duration, setDuration] = useState(calculateDuration(targetDate));
   const timerRef = useRef(0);
 
@@ -22,7 +22,7 @@ const Countdown: React.FC<Props> = ({ targetDate }) => {
     return () => {
       clearInterval(timerRef.current);
     }
-  }, [targetDate]);
+  }, [targetDate, timerCallback]);
 
   return (
     <div>
@@ -34,4 +34,4 @@ const Countdown: React.FC<Props> = ({ targetDate }) => {
   )
 };
 
-export default Countdown;
+export default CountdownTimer;

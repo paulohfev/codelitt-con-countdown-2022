@@ -3,10 +3,12 @@ import moment from 'moment';
 
 type Props = {
   targetDate: number;
-}
+};
 
-const calculateDuration = (targetDate: any) =>
-  moment.duration(Math.max(targetDate - Math.floor(Date.now())), 'milliseconds');
+const calculateDuration = (targetDate: number) => {
+  const currentDateInMilliseconds = Math.floor(Date.now());
+  return moment.duration(Math.max(targetDate - currentDateInMilliseconds));
+}
 
 const CountdownTimer: React.FC<Props> = ({ targetDate }) => {
   const [duration, setDuration] = useState(calculateDuration(targetDate));

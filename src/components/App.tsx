@@ -11,9 +11,16 @@ const App: React.FC = () => {
     <main className={styles.main}>
       <Header />
 
-      <div className={styles.wrapper}>
+      <section className={styles.section}>
+        <div className={styles['timer-wrapper']}>
+          <h1 className={styles['section-title']}>Countdown to</h1>
+          <h3 className={styles['section-subtitle']}>
+            <time>October 14, 2022 | 10:00 AM EST</time>
+          </h3>
+        </div>
+
         <Timer targetDate={targetDateInMilliseconds} />
-      </div>
+      </section>
     </main>
   );
 };

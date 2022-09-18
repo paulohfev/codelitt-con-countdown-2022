@@ -46,8 +46,8 @@ const Timer: React.FC<Props> = ({ targetDate }) => {
     <div className={styles.wrapper}>
       <Counter circleRadius={daysRadius} time={days} unit="Days" />
       <Counter circleRadius={hoursRadius} time={hours} unit="Hours" />
-      <Counter circleRadius={minutesRadius} time={minutes} unit="Minutes" />
-      <Counter circleRadius={secondsRadius} time={seconds} unit="Seconds" />
+      <Counter circleRadius={minutesRadius} time={minutes} unit="Min" />
+      <Counter circleRadius={secondsRadius} time={seconds} unit="Sec" />
     </div>
   )
 };

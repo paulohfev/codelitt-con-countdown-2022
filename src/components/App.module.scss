@@ -3,6 +3,24 @@
   height: 100vh;
 }
 
-.wrapper {
+.section {
+  margin: 40px 0;
   padding: 0 24px;
+
+  .timer-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-transform: uppercase;
+  }
+}
+
+.section-title,
+.section-subtitle {
+  color: var(--color-white);
+}
+
+.section-title {
+  margin-bottom: 24px;
 }

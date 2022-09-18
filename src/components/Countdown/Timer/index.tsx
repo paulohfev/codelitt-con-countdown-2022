@@ -16,24 +16,38 @@ const Timer: React.FC<Props> = ({ targetDate }) => {
   const [duration, setDuration] = useState(calculateDuration(targetDate));
   const timerRef = useRef(0);
 
-  const timerCallback = useCallback(() => {
+  const days = duration.days();
+  const hours = duration.hours();
+  const minutes = duration.minutes();
+  const seconds = duration.seconds();
+
+  const updateDuration = useCallback(() => {
     setDuration(calculateDuration(targetDate));
   }, [targetDate])
 
   useEffect(() => {
-    timerRef.current = window.setInterval(timerCallback, 1000);
+    timerRef.current = window.setInterval(updateDuration, 1000);
 
     return () => {
       clearInterval(timerRef.current);
     }
-  }, [targetDate, timerCallback]);
+  }, [targetDate, updateDuration]);
+
+  const mapNumber = (number: number, in_min: number, in_max: number, out_min: number, out_max: number) => {
+    return (number - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+  }
+
+  const daysRadius = mapNumber(days, 30, 0, 0, 360);
+  const hoursRadius = mapNumber(hours, 24, 0, 0, 360);
+  const minutesRadius = mapNumber(minutes, 60, 0, 0, 360);
+  const secondsRadius = mapNumber(seconds, 60, 0, 0, 360);
 
   return (
     <div className={styles.wrapper}>
-      <Counter time={duration.days()} unit="Days" />
-      <Counter time={duration.hours()} unit="Hours" />
-      <Counter time={duration.minutes()} unit="Minutes" />
-      <Counter time={duration.seconds()} unit="Seconds" />
+      <Counter circleRadius={daysRadius} time={days} unit="Days" />
+      <Counter circleRadius={hoursRadius} time={hours} unit="Hours" />
+      <Counter circleRadius={minutesRadius} time={minutes} unit="Minutes" />
+      <Counter circleRadius={secondsRadius} time={seconds} unit="Seconds" />
     </div>
   )
 };

@@ -1,0 +1,7 @@
+.wrapper {
+  color: var(--color-white);
+
+  &:not(:last-of-type) {
+    margin-right: 20px;
+  }
+}

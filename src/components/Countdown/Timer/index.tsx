@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import moment from 'moment';
+import Counter from 'components/Countdown/Counter';
+import styles from './CountdownTimer.module.scss';
 
 type Props = {
   targetDate: number;
@@ -10,7 +12,7 @@ const calculateDuration = (targetDate: number) => {
   return moment.duration(Math.max(targetDate - currentDateInMilliseconds));
 }
 
-const CountdownTimer: React.FC<Props> = ({ targetDate }) => {
+const Timer: React.FC<Props> = ({ targetDate }) => {
   const [duration, setDuration] = useState(calculateDuration(targetDate));
   const timerRef = useRef(0);
 
@@ -27,13 +29,13 @@ const CountdownTimer: React.FC<Props> = ({ targetDate }) => {
   }, [targetDate, timerCallback]);
 
   return (
-    <div>
-      {duration.days()} Days
-      {duration.hours()} Hours
-      {duration.minutes()} Minutes
-      {duration.seconds()} Seconds
+    <div className={styles.wrapper}>
+      <Counter time={duration.days()} unit="Days" />
+      <Counter time={duration.hours()} unit="Hours" />
+      <Counter time={duration.minutes()} unit="Minutes" />
+      <Counter time={duration.seconds()} unit="Seconds" />
     </div>
   )
 };
 
-export default CountdownTimer;
+export default Timer;

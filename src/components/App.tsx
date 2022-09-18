@@ -1,5 +1,7 @@
 import React from 'react';
-import CountdownTimer from 'components/CountdownTimer';
+import Timer from 'components/Countdown/Timer';
+import Header from './Header';
+import 'styles/index.css';
 import styles from './App.module.scss';
 
 const App: React.FC = () => {
@@ -7,7 +9,11 @@ const App: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <CountdownTimer targetDate={targetDateInMilliseconds} />
+      <Header />
+
+      <div className={styles.wrapper}>
+        <Timer targetDate={targetDateInMilliseconds} />
+      </div>
     </main>
   );
 };

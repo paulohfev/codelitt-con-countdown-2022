@@ -1,3 +1,8 @@
 .main {
-  border: 5px solid red;
+  background-color: var(--color-black);
+  height: 100vh;
+}
+
+.wrapper {
+  padding: 0 24px;
 }

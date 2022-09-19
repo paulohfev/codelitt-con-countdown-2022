@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import moment from 'moment';
 import Counter from 'components/Countdown/Counter';
 import styles from './CountdownTimer.module.scss';
+import { SVGCircleColor } from 'enums/SVGCirleColors';
 
 type Props = {
   targetDate: number;
@@ -44,10 +45,10 @@ const Timer: React.FC<Props> = ({ targetDate }) => {
 
   return (
     <div className={styles.wrapper}>
-      <Counter circleRadius={daysRadius} time={days} unit="Days" />
-      <Counter circleRadius={hoursRadius} time={hours} unit="Hours" />
-      <Counter circleRadius={minutesRadius} time={minutes} unit="Min" />
-      <Counter circleRadius={secondsRadius} time={seconds} unit="Sec" />
+      <Counter circleColor={SVGCircleColor.red} circleRadius={daysRadius} time={days} unit="Days" />
+      <Counter circleColor={SVGCircleColor.green} circleRadius={hoursRadius} time={hours} unit="Hours" />
+      <Counter circleColor={SVGCircleColor.yellow} circleRadius={minutesRadius} time={minutes} unit="Min" />
+      <Counter circleColor={SVGCircleColor.blue} circleRadius={secondsRadius} time={seconds} unit="Sec" />
     </div>
   )
 };

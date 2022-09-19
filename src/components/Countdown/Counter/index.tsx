@@ -1,17 +1,19 @@
 import React from 'react';
 import SVGCircle from 'components/SVGCircle';
+import { SVGCircleColor } from 'enums/SVGCirleColors';
 import styles from './Counter.module.scss';
 
 type Props = {
+  circleColor: SVGCircleColor;
   circleRadius: number;
   time: number;
   unit: string;
 };
 
-const Counter: React.FC<Props> = ({ circleRadius, time, unit}) => {
+const Counter: React.FC<Props> = ({ circleColor, circleRadius, time, unit}) => {
   return (
     <div className={styles.wrapper}>
-      <SVGCircle radius={circleRadius} />
+      <SVGCircle color={circleColor} radius={circleRadius} />
 
       <div className={styles['count-wrapper']}>
         <time className={styles.time}>{time}</time>
